@@ -1,13 +1,3 @@
-'''
-
-Problem 23: Edit Distance Alignment
-
-Given: Two protein strings s and t in FASTA format (with each string having length at most 1000 aa).
-
-Return: The edit distance dE(s,t) followed by two augmented strings s and t representing an optimal alignment of s and t.
-'''
-
-
 import reader
 
 def match(one, two):
@@ -26,8 +16,7 @@ for j in range(1, len(s1) + 1):
     for i in range(1, len(s2) + 1):
         table[i][j] = min(table[i - 1][j - 1] + match(s1[j - 1], s2[i - 1]), table[i][j - 1] + 1, table[i - 1][j] + 1)
 
-# Essentially, find the path that we took by using some cool if statements
-# Learned mainly from http://en.wikipedia.org/wiki/Needleman-Wunsch_algorithm
+# Needleman-Wunsch_algorithm
 
 i, j, al1, al2 = len(s2), len(s1), "", ""
 while i > 0 or j > 0:
